@@ -4,7 +4,7 @@ This project lets you dockerize a Ruby on Rails 6.1 application backed by Postgr
 
 ## Features
 
-THis includes the following:
+This includes the following:
 
 	Dockerfile to create the web app
 	database.yml for accessing the PostgreSQL database backend
@@ -44,7 +44,7 @@ To create this you would run the following
 		```
 	* When its all running, issue the following to the web container
 		```bash
-		docker exec $(nameOfYourWebContainer rails generate rspec:install
+		docker exec $(nameOfYourWebContainer) rails generate rspec:install
 		``` 
 		This is only if you added RSpec.
 
