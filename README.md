@@ -17,50 +17,50 @@ THis includes the following:
 
 To create this you would run the following
 
-	- Ensure you have Docker/Docker Desktop installed (with docker-compose)
-	- Create your directory where you want the app on your local system
-	- Copy all file except the README.md into that created directory
-	- CD into that directory
-	- Run 
-		```
+	* Ensure you have Docker/Docker Desktop installed (with docker-compose)
+	* Create your directory where you want the app on your local system
+	* Copy all file except the README.md into that created directory
+	* CD into that directory
+	* Run 
+		```bash
 		docker-compose run --no-deps web rails new . --force --database=postgresql
 		```
-	- If you are on Linux, you need to run 
-		```
+	* If you are on Linux, you need to run 
+		```bash
 		sudo chown -R $USER:$USER .
 		```
 	  to own the files.
-	- Any additional gems you want available need to be added to the Gemfile now, like RSpec.
-	- Run 
-		```
-		docker build
+	* Any additional gems you want available need to be added to the Gemfile now, like RSpec.
+	* Run 
+		```bash
+		docker-compose build
 		```
 	  This command is rerun every time you change either the Gemfile in your app, or the Dockerfile.
-	- When the entire process is complete, you need to copy *database.yml* into the
-	  * config/ * directory of your new app.
-	- Run 
-		```
+	* When the entire process is complete, you need to copy _database.yml_ into the
+	  _config/_ directory of your new app.
+	* Run 
+		```bash
 		docker-compose up
 		```
-	- When its all running, issue the following to the web container
-		```
+	* When its all running, issue the following to the web container
+		```bash
 		docker exec $(nameOfYourWebContainer rails generate rspec:install
 		``` 
 		This is only if you added RSpec.
 
-		```
+		```bash
 		docker exec $(nameOfYourWebContainer) rake db:create
 		```
-		```
+		```bash
 		docker exec $(name of yourWebContainer) rake db:migrate
 		```
-	- Open your web browser and go to *http://localhost:3000* and you should see the app running.
-	- To stop everything, run 
-		```
+	* Open your web browser and go to *http://localhost:3000* and you should see the app running.
+	* To stop everything, run 
+		```bash
 		docker-compose down
 		```
-	- To restart the application in the future, run 
-		```
+	* To restart the application in the future, run 
+		```bash
 		docker-compose up
 		```
 
